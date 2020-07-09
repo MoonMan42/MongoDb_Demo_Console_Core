@@ -1,6 +1,8 @@
 # MongoDb_Demo_Console_Core
 Mongo DB test and tutorial
 
+1. install the MongoDb.driver nuget package. 
+
 1. setup a Model 
 
         public class PersonModel
@@ -26,7 +28,7 @@ Mongo DB test and tutorial
         }
     
     
-2. setup the CRUD operations for accessing the database/files
+1. setup the CRUD operations for accessing the database/files
 
        public class MongoCRUD
         {
@@ -89,11 +91,11 @@ Mongo DB test and tutorial
     
     
     
-3. set db connection and call functions
+1. set db connection and call functions
 
         MongoCRUD db = new MongoCRUD("AddressBook");
     
-4. create new record and insert it into the database and set it to a new table
+1. create new record and insert it into the database and set it to a new table
 
             PersonModel person = new PersonModel
             {
@@ -111,20 +113,20 @@ Mongo DB test and tutorial
                             // Table, record to insert
             db.InsertRecord("Users", person);
             
-5. Get list of all records
+1. Get list of all records
   
         var records = db.LoadRecods<PersonModel>("Users");
 
-6. retrieve individual accounts by ID 
+1. retrieve individual accounts by ID 
   
           var person = db.LoadRecordById<PersonModel>("Users", new Guid("6fa5971e-ac7c-45df-9fc6-5f7da09c47fd"));
 
-7. Update a record by ID above
+1. Update a record by ID above
   
         person.DateOfBirth = new DateTime(1988, 10, 25, 0, 0, 0, DateTimeKind.Utc);
         db.UpsertRecord("Users", person.Id, person);
   
-8. Delete a record by ID above 
+1. Delete a record by ID above 
 
         db.DeleteRecord<PersonModel>("Users", person.Id);
   
